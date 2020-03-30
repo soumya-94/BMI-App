@@ -23,23 +23,30 @@ class ViewController: UIViewController {
 
     @IBAction func heightSliderChanged(_ sender: UISlider) {
         
-        heightLabel.text = String(format: "%.2f", sender.value)+"m"
-        
+        let height = String(format: "%.2f", sender.value)
+        weightLabel.text = "\(height)m"
     }
     
     
     @IBAction func weightSliderChanged(_ sender: UISlider) {
         
-        weightLabel.text = "\(Int(sender.value))kg"
-        
+        let weight = String(format: "%.0f", sender.value)
+        weightLabel.text = "\(weight)Kg"
     }
     
     @IBAction func calculatePressed(_ sender: UIButton) {
         
         let height = heightSlider.value
         let weight = weightSlider.value
-        let bmi = weight/powf(height, 2.0)
-        print(String(format: "%.1f", bmi))
+        //let bmi = weight/powf(height, 2.0)
+        let bmi = weight / (height * height)
+        //print(String(format: "%.1f", bmi))
+        
+        let secondVC = SecondViewController()   // obejct of the second view controller class
+        secondVC.bmiValue = String(format: "%.1f", bmi)
+        
+        self.present(secondVC, animated: true, completion: nil)
+        // self is the the current view controller which presents the second one with some animation but does not do anything once the second was has been presented
     }
     
     
