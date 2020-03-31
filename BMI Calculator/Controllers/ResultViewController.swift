@@ -17,11 +17,15 @@ class ResultViewController: UIViewController {
     
     var bmiValue: String?
     // optional because when this VC is created we don't actually know what the value of bmi is going to be
+    var advice: String?
+    var color: UIColor?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         bmiLabel.text = bmiValue
+        adviceLabel.text = advice
+        view.backgroundColor = color
     }
     
     
